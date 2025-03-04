@@ -18,7 +18,6 @@ export interface Monument {
     foreign: number;
     children: number; // Under 15
     seniorCitizen?: number;
-    studentDiscount?: number; // Percentage
   };
   facilities: string[];
   rules: string[];
@@ -36,18 +35,13 @@ export interface Monument {
   audioGuideAvailable: boolean;
   audioGuideFee?: number;
   visitDuration: string; // Approximate time required to visit
-  additionalServices?: Array<{
-    name: string;
-    description: string;
-    price: number;
-  }>;
 }
 
 export interface Booking {
   id: string;
   monumentId: string;
   visitDate: Date;
-  visitorType: 'indian' | 'foreign' | 'children' | 'seniorCitizen' | 'student';
+  visitorType: 'indian' | 'foreign' | 'children' | 'seniorCitizen';
   ticketCount: number;
   totalAmount: number;
   visitorName: string;
@@ -60,13 +54,12 @@ export interface Booking {
   audioGuideRequired: boolean;
   photographyPermission: boolean;
   videoPermission: boolean;
-  additionalServices?: string[];
   bookingTime: Date;
   paymentStatus: 'pending' | 'completed' | 'failed' | 'refunded';
   bookingStatus: 'confirmed' | 'cancelled' | 'pending';
   ticketCode?: string;
 }
 
-export type VisitorType = 'indian' | 'foreign' | 'children' | 'seniorCitizen' | 'student';
+export type VisitorType = 'indian' | 'foreign' | 'children' | 'seniorCitizen';
 export type GuideDuration = 'hourly' | 'halfDay' | 'fullDay';
 export type IDType = 'aadhar' | 'passport' | 'driverLicense' | 'voterID' | 'other';
